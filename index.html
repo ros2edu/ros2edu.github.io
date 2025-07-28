@@ -32,6 +32,36 @@
     }
     .subtitle { font-size: 1.4rem; font-weight: 500; margin-top: 10px; }
     .section { padding: 60px 0 20px; }
+    table {
+        border-collapse: collapse;
+        width: 60%;
+        margin: auto;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+        text-align: left;
+        padding: 12px;
+        border: 1px solid #ddd;
+    }
+    th {
+        background-color: #444;
+        color: white;
+    }
+    tr:nth-child(odd) td:nth-child(1),
+    tr:nth-child(odd) td:nth-child(2) {
+        background-color: #f9f9f9;
+    }
+    tr:nth-child(even) td:nth-child(1),
+    tr:nth-child(even) td:nth-child(2) {
+        background-color: #e6f0ff;
+    }
+    caption {
+        caption-side: top;
+        text-align: center;
+        font-size: 1.4em;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -73,42 +103,205 @@
 
   <section id="programme" class="section">
     <h2>Expected Programme</h2>
-    <ul>
-      <li><strong>Welcome & Workshop Goals</strong> (00:00–00:15)</li>
-      <li><strong>Lightning Talks (Part 1)</strong> (00:15–01:00)</li>
-      <li><strong>Lightning Talks (Part 2)</strong> (01:00–01:45)</li>
-      <li><strong>Break & Networking</strong> (01:45–02:00)</li>
-      <li><strong>Demo Showcase</strong> (02:00–02:40)</li>
-      <li><strong>Interactive Panel & Audience Q&A</strong> (02:40–03:15)</li>
-      <li><strong>Collaborative Breakouts & Discussions</strong> (03:15–03:45)</li>
-      <li><strong>Wrap-up & Next Steps</strong> (03:45–04:00)</li>
-    </ul>
+    <table>
+      <caption>Workshop Schedule</caption>
+      <tr>
+          <th>Session</th>
+          <th>Time</th>
+      </tr>
+      <tr>
+          <td>Welcome &amp; Workshop Goals</td>
+          <td>00:00–00:15</td>
+      </tr>
+      <tr>
+          <td>Lightning Talks (Part 1)</td>
+          <td>00:15–01:00</td>
+      </tr>
+      <tr>
+          <td>Lightning Talks (Part 2)</td>
+          <td>01:00–01:45</td>
+      </tr>
+      <tr>
+          <td>Break &amp; Networking</td>
+          <td>01:45–02:00</td>
+      </tr>
+      <tr>
+          <td>Demo Showcase</td>
+          <td>02:00–02:40</td>
+      </tr>
+      <tr>
+          <td>Interactive Panel &amp; Audience Q&amp;A</td>
+          <td>02:40–03:15</td>
+      </tr>
+      <tr>
+          <td>Collaborative Breakouts &amp; Discussions</td>
+          <td>03:15–03:45</td>
+      </tr>
+      <tr>
+          <td>Wrap-up &amp; Next Steps</td>
+          <td>03:45–04:00</td>
+      </tr>
+  </table>
+    
   </section>
 
   <section id="presenters" class="section">
     <h2>Confirmed Presenters</h2>
-    <ul>
-      <li>Dr Vijay Pawar (UCL Bartlett School)</li>
-      <li>Dr Rafaello Bonghi (NVIDIA)</li>
-      <li>Prof Sabine Hauert (University of Bristol)</li>
-      <li>Prof Marc Hanheide (University of Lincoln)</li>
-      <li>Dr Maria Koskinopoulou (Heriot-Watt)</li>
-      <li>Riccardo Tellez (The Construct)</li>
-      <li>Alexander Enoch (Robotical)</li>
-    </ul>
-  </section>
 
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+    
+    <!-- Vijay Pawar -->
+    <div align="center">
+      <img src="https://profiles.ucl.ac.uk/22600-vijay-m-pawar/photo" alt="Vijay Pawar" width="150"><br>
+      <strong>Dr Vijay Pawar</strong><br>
+      <em>UCL Bartlett School</em><br>
+      <a href="#" class="fa fa-home"></a>
+      <a href="#" class="fa fa-graduation-cap"></a>
+      <a href="#" class="fab fa-linkedin"></a>
+    </div>
+    
+    <!-- Rafaello Bonghi -->
+    <div align="center">
+      <img src="https://avatars.githubusercontent.com/u/4551246?v=4" alt="Rafaello Bonghi" width="150"><br>
+      <strong>Dr Rafaello Bonghi</strong><br>
+      <em>NVIDIA</em><br>
+      <a href="#" class="fa fa-home"></a>
+      <a href="#" class="fa fa-graduation-cap"></a>
+      <a href="#" class="fab fa-linkedin"></a>
+    </div>
+    
+    <!-- Sabine Hauert -->
+    <div align="center">
+      <img src="https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=u-OHPhAAAAAJ&citpid=10" alt="Sabine Hauert" width="150"><br>
+      <strong>Prof Sabine Hauert</strong><br>
+      <em>University of Bristol</em><br>
+      <a href="#" class="fa fa-home"></a>
+      <a href="#" class="fa fa-graduation-cap"></a>
+      <a href="#" class="fab fa-linkedin"></a>
+    </div>
+    
+    <!-- Marc Hanheide -->
+    <div align="center">
+      <img src="https://media.licdn.com/dms/image/v2/C4D03AQFdbAs7SVpaTg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1517554876815?e=1756944000&v=beta&t=QnDr5OFs2obpegxZ6ZscFUvB0kBg6nZLx6jPoouHD9o" alt="Marc Hanheide" width="150"><br>
+      <strong>Prof Marc Hanheide</strong><br>
+      <em>University of Lincoln</em><br>
+      <a href="#" class="fa fa-home"></a>
+      <a href="#" class="fa fa-graduation-cap"></a>
+      <a href="#" class="fab fa-linkedin"></a>
+    </div>
+    
+    <!-- Maria Koskinopoulou -->
+    <div align="center">
+      <img src="https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=nwM4S70AAAAJ&citpid=16" alt="Maria Koskinopoulou" width="150"><br>
+      <strong>Dr Maria Koskinopoulou</strong><br>
+      <em>Heriot-Watt University</em><br>
+      <a href="#" class="fa fa-home"></a>
+      <a href="#" class="fa fa-graduation-cap"></a>
+      <a href="#" class="fab fa-linkedin"></a>
+    </div>
+    
+    <!-- Riccardo Tellez -->
+    <div align="center">
+      <img src="https://media.licdn.com/dms/image/v2/C4D03AQGHMBVRUUEfkQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1622542171177?e=1756944000&v=beta&t=qAh5_gVIeJrCK3omiqa3_axjPmGxzTohQlWCfv8mHRI" alt="Riccardo Tellez" width="150"><br>
+      <strong>Riccardo Tellez</strong><br>
+      <em>The Construct</em><br>
+      <a href="#" class="fa fa-home"></a>
+      <a href="#" class="fa fa-graduation-cap"></a>
+      <a href="#" class="fab fa-linkedin"></a>
+    </div>
+    
+    <!-- Alexander Enoch -->
+    <div align="center">
+      <img src="https://robohub.org/wp-content/uploads/2016/07/AAEAAQAAAAAAAAYUAAAAJGVjMWExMTRkLTQ5ODUtNGMxYS1iMjdmLTkyMTQzMjc4NGM4ZQ-220x220.jpg" alt="Alexander Enoch" width="150"><br>
+      <strong>Alexander Enoch</strong><br>
+      <em>Robotical</em><br>
+      <a href="#" class="fa fa-home"></a>
+      <a href="#" class="fa fa-graduation-cap"></a>
+      <a href="#" class="fab fa-linkedin"></a>
+    </div>
+    
+    </div>
+
+</section>
+
+
+  
   <section id="organisers" class="section">
     <h2>Organisers</h2>
-    <ul>
-      <li>Dr Mickey Li (UCL)</li>
-      <li>Dr Valerio Modugno (UCL)</li>
-      <li>Ziwen Lu (UCL)</li>
-      <li>Dr Vijay Pawar (UCL)</li>
-      <li>Prof Simon Julier (UCL)</li>
-      <li>Favour Adetunji (Heriot-Watt)</li>
-      <li>Ziniu Wu (University of Bristol)</li>
-    </ul>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+      
+      <!-- Mickey Li -->
+      <div align="center">
+        <img src="https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=Tb7C92oAAAAJ&citpid=1" alt="Mickey Li" width="150"><br>
+        <strong>Dr Mickey Li</strong><br>
+        <em>UCL</em><br>
+        <a href="#" class="fa fa-home"></a>
+        <a href="#" class="fa fa-graduation-cap"></a>
+        <a href="#" class="fab fa-linkedin"></a>
+      </div>
+      
+      <!-- Valerio Modugno -->
+      <div align="center">
+        <img src="https://media.licdn.com/dms/image/v2/D4E03AQEJLa-fHPy3yA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1704944256823?e=1756944000&v=beta&t=rzrdHn93JUCCxQCu39keanYWoTAmi_pktTlv1vhrfAM" alt="Valerio Modugno" width="150"><br>
+        <strong>Dr Valerio Modugno</strong><br>
+        <em>UCL</em><br>
+        <a href="#" class="fa fa-home"></a>
+        <a href="#" class="fa fa-graduation-cap"></a>
+        <a href="#" class="fab fa-linkedin"></a>
+      </div>
+      
+      <!-- Ziwen Lu -->
+      <div align="center">
+        <img src="https://scholar.google.com/citations/images/avatar_scholar_256.png" alt="Ziwen Lu" width="150"><br>
+        <strong>Ziwen Lu</strong><br>
+        <em>UCL</em><br>
+        <a href="#" class="fa fa-home"></a>
+        <a href="#" class="fa fa-graduation-cap"></a>
+        <a href="#" class="fab fa-linkedin"></a>
+      </div>
+      
+      <!-- Vijay Pawar (duplicate for organiser role) -->
+      <div align="center">
+        <img src="https://profiles.ucl.ac.uk/22600-vijay-m-pawar/photo" alt="Vijay Pawar" width="150"><br>
+        <strong>Dr Vijay Pawar</strong><br>
+        <em>UCL</em><br>
+        <a href="#" class="fa fa-home"></a>
+        <a href="#" class="fa fa-graduation-cap"></a>
+        <a href="#" class="fab fa-linkedin"></a>
+      </div>
+      
+      <!-- Simon Julier -->
+      <div align="center">
+        <img src="https://scholar.google.com/citations/images/avatar_scholar_256.png" alt="Simon Julier" width="150"><br>
+        <strong>Prof Simon Julier</strong><br>
+        <em>UCL</em><br>
+        <a href="#" class="fa fa-home"></a>
+        <a href="#" class="fa fa-graduation-cap"></a>
+        <a href="#" class="fab fa-linkedin"></a>
+      </div>
+      
+      <!-- Favour Adetunji -->
+      <div align="center">
+        <img src="https://scholar.google.com/citations/images/avatar_scholar_256.png" alt="Favour Adetunji" width="150"><br>
+        <strong>Favour Adetunji</strong><br>
+        <em>Heriot-Watt University</em><br>
+        <a href="#" class="fa fa-home"></a>
+        <a href="#" class="fa fa-graduation-cap"></a>
+        <a href="#" class="fab fa-linkedin"></a>
+      </div>
+      
+      <!-- Ziniu Wu -->
+      <div align="center">
+        <img src="https://ziniuw.com/assets/img/avatar.JPG" alt="Ziniu Wu" width="150"><br>
+        <strong>Ziniu Wu</strong><br>
+        <em>University of Bristol</em><br>
+        <a href="#" class="fa fa-home"></a>
+        <a href="#" class="fa fa-graduation-cap"></a>
+        <a href="#" class="fab fa-linkedin"></a>
+      </div>
+      
+      </div>
   </section>
 
   <section id="dates" class="section">

@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Teaching Robotics with ROS 2 | ROSCon UK 2025 Workshop</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+    crossorigin="anonymous">
+
+  <style>
+    body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+    .overview-box {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 960px;
+    margin: auto;
+}
+
+    .title-container {
+      width: 100%;
+      margin: auto;
+      padding: 60px 20px 40px;
+      background: #f8f9fa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-top: 55px;
+    }
+    .title-container img {
+      max-width: 320px;
+      height: auto;
+      margin: 0 auto 24px;
+      display: block;
+    }
+    .subtitle { font-size: 1.4rem; font-weight: 500; margin-top: 10px; }
+    .section { padding: 60px 0 20px; }
+    table {
+        border-collapse: collapse;
+        width: 90%;
+        margin: auto;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+        text-align: left;
+        padding: 12px;
+        border: 1px solid #ddd;
+    }
+    th {
+        background-color: #444;
+        color: white;
+    }
+   tr:nth-child(odd) td {
+    background-color: #f9f9f9;
+}
+
+tr:nth-child(even) td {
+    background-color: #e6f0ff;
+}
+    caption {
+        caption-side: top;
+        text-align: center;
+        font-size: 1.4em;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <a class="navbar-brand" href="#">ROS Education Workshop 2025</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="mainNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
+      <li class="nav-item"><a class="nav-link" href="#schedule">Schedule</a></li>
+      <li class="nav-item"><a class="nav-link" href="#presenters">Presenters</a></li>
+      <li class="nav-item"><a class="nav-link" href="#organisers">Organisers</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="title-container">
+  <a href="https://roscon.org.uk/2025/" target="_blank" rel="noopener noreferrer">
+  <img src="imgs/ROSCon2025.png" alt="ROSCon UK 2025 logo">
+</a>
+  <div class="subtitle">Workshop at ROSCon UK 2025</div>
+  <h1>Teaching Robotics with ROS 2:<br>Lessons, Platforms, and Perspectives</h1>
+  <div class="subtitle text-primary">Date: Starting from 14:30, Tuesday, September 16, 2025</div>
+  <div class="subtitle text-primary">Venue: Informatics Forum, 10 Crichton Street, Edinburgh, EH8 9AB</div>
+  <div class="subtitle text-primary">Room: Theorem, Bayes Centre</div>
+  <h5 class="mt-3">Contact: <a href="mailto:ros-edu-workshop@googlegroups.com">ros-edu-workshop@googlegroups.com</a></h5>
+</header>
+
+<div class="container">
+
+<section id="updates" class="section" style="font-family: Arial, sans-serif; line-height: 1.6; margin: 2em 0;">
+  <div class="updates" style="max-width: 800px; margin: auto;">
+    <h2 style="color: #c0392b; text-align: left; font-size: 1.8em; margin-bottom: 0.5em;">Updates</h2>
+    <p>
+      Full write-up + talks & panel video on ROS Discourse:
+      <a href="https://discourse.openrobotics.org/t/teaching-robotics-with-ros2-2-lessons-platforms-and-perspectives-roscon-uk-2025-workshop-summary-and-outcomes/50587" target="_blank">
+        [link]
+      </a>
+    </p>
+
+    <h3 style="color: #c0392b; font-size: 1.4em; margin-top: 1.2em;">Summary</h3>
+    <p>
+      Teaching robotics is challenging due to complex tooling, steep learning curves, and the need to balance theoretical depth with hands-on practice. 
+      The half-day <strong>“mini-conference-in-a-workshop”</strong> convened over 40 educators, students, and developers to exchange effective methods and 
+      practical strategies for teaching with <strong>#ROS2</strong>.
+    </p>
+
+    <h3 style="color: #c0392b; font-size: 1.4em; margin-top: 1.2em;">Key Outcomes</h3>
+    <ul style="margin-left: 1.2em;">
+      <li><strong>Make setup painless:</strong> Containerised, “just-works” environments so students can start in minutes, not weeks.</li>
+      <li><strong>Bridge sim ↔ real:</strong> Enable seamless Gazebo/Isaac Sim → hardware workflows (via Zenoh/DDS) to build real intuition.</li>
+      <li><strong>Teach from the learner’s journey:</strong> Develop materials linking core concepts to visible results rather than static reference notes.</li>
+      <li><strong>Scale without killing creativity:</strong> Support project-based learning at cohort scale using reproducible stacks.</li>
+      <li><strong>AI literacy matters:</strong> Integrate AI tools but teach validation, safety, and critical thinking alongside usage.</li>
+      <li><strong>Specialisation is OK:</strong> Recognise diverse roles (perception, control, HRI, software) while maintaining collaboration at the core.</li>
+      <li><strong>Share and sustain:</strong> Build open resources, shared infrastructure, and a continuing ROS 2 education network.</li>
+    </ul>
+  </div>
+</section>
+
+
+
+  
+  <section id="overview" class="section">
+  <div class="overview-box">
+    <h2>Overview</h2>
+    <p>
+      Teaching robotics is uniquely challenging. Between managing complex tooling, navigating steep learning curves,
+      and balancing theory with hands-on skills, many educators struggle to deliver effective robotics education.
+      ROS 2 offers immense power, but it’s not always easy to teach.
+    </p>
+    <p>
+      This half-day workshop brings educators, students, and developers together to share honest experiences of teaching
+      robotics with ROS 2. Through lightning talks, demos, discussions, and breakouts, we'll explore what’s working,
+      what isn’t, and how we can better support each other. Our goal: to build community, share tools, and improve
+      how we teach robotics.
+    </p>
+  </div>
+</section>
+
+
+
+
+    <section id="presenters" class="section">
+    <h2>Presenters</h2>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+    
+    <!-- Vijay Pawar -->
+    <div align="center">
+      <img src="imgs/vp.jpg" alt="Vijay Pawar" width="150"><br>
+      <strong>Dr Vijay Pawar</strong><br>
+      <em>UCL Bartlett School</em><br>
+      <a href="#" class="fa fa-home"></a>
+      <a href="#" class="fa fa-graduation-cap"></a>
+      <a href="#" class="fab fa-linkedin"></a>
+    </div>
+    
+    <!-- Rafaello Bonghi -->
+    <div align="center">
+      <img src="https://avatars.githubusercontent.com/u/4551246?v=4" alt="Rafaello Bonghi" width="150"><br>
+      <strong>Dr Rafaello Bonghi</strong><br>
+      <em>NVIDIA</em><br>
+      <a href="#" class="fa fa-home"></a>
+      <a href="#" class="fa fa-graduation-cap"></a>
+      <a href="#" class="fab fa-linkedin"></a>
+    </div>
+    
+    <!-- Sabine Hauert -->
+    <div align="center">
+      <img src="https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=u-OHPhAAAAAJ&citpid=10" alt="Sabine Hauert" width="150"><br>
+      <strong>Prof Sabine Hauert</strong><br>
+      <em>University of Bristol</em><br>
+      <a href="#" class="fa fa-home"></a>
+      <a href="#" class="fa fa-graduation-cap"></a>
+      <a href="#" class="fab fa-linkedin"></a>
+    </div>
+    
+    <!-- Marc Hanheide -->
+    <div align="center">
+      <img src="imgs/mh.jpg" alt="Marc Hanheide" width="150"><br>
+      <strong>Prof Marc Hanheide</strong><br>
+      <em>University of Lincoln</em><br>
+      <a href="#" class="fa fa-home"></a>
+      <a href="#" class="fa fa-graduation-cap"></a>
+      <a href="#" class="fab fa-linkedin"></a>
+    </div>
+    
+    <!-- Maria Koskinopoulou -->
+    <!--
+    <div align="center">
+      <img src="https://researchportal.hw.ac.uk/files-asset/97207088/IMG_20230703_102209.jpg?w=320&f=webp" alt="Maria Koskinopoulou" width="150"><br>
+      <strong>Dr Maria Koskinopoulou</strong><br>
+      <em>Heriot-Watt University</em><br>
+      <a href="#" class="fa fa-home"></a>
+      <a href="#" class="fa fa-graduation-cap"></a>
+      <a href="#" class="fab fa-linkedin"></a>
+    </div>
+      -->
+    
+
+    <!-- Alexander Enoch -->
+    <div align="center">
+      <img src="https://robohub.org/wp-content/uploads/2016/07/AAEAAQAAAAAAAAYUAAAAJGVjMWExMTRkLTQ5ODUtNGMxYS1iMjdmLTkyMTQzMjc4NGM4ZQ-220x220.jpg" alt="Alexander Enoch" width="150"><br>
+      <strong>Alexander Enoch</strong><br>
+      <em>Robotical</em><br>
+      <a href="#" class="fa fa-home"></a>
+      <a href="#" class="fa fa-graduation-cap"></a>
+      <a href="#" class="fab fa-linkedin"></a>
+    </div>
+
+      <!-- Martin Klomp -->
+    <div align="center">
+      <img src="imgs/csm_07v1g_0affdbe35b.jpg" alt="Martin Klomp" width="150"><br>
+      <strong>Martin Klomp</strong><br>
+      <em>TU Delft</em><br>
+      <a href="#" class="fa fa-home"></a>
+      <a href="#" class="fa fa-graduation-cap"></a>
+      <a href="#" class="fab fa-linkedin"></a>
+    </div>
+
+          <!-- Riccardo Tellez -->
+    <div align="center">
+      <img src="imgs/rt.jpg" alt="Riccardo Tellez" width="150"><br>
+      <strong>Riccardo Tellez</strong><br>
+      <em>The Construct</em><br>
+      <a href="#" class="fa fa-home"></a>
+      <a href="#" class="fa fa-graduation-cap"></a>
+      <a href="#" class="fab fa-linkedin"></a>
+    </div>
+
+          <div align="center">
+      <img src="https://thenationalrobotarium.com/wp-content/uploads/WebsitePic-400x400-1.png" alt="Riccardo Tellez" width="150"><br>
+      <strong>Dr Ingo Keller</strong><br>
+      <em>The National Robotarium</em><br>
+      <a href="#" class="fa fa-home"></a>
+      <a href="#" class="fa fa-graduation-cap"></a>
+      <a href="#" class="fab fa-linkedin"></a>
+    </div>
+    
+    </div>
+
+</section>
+
+
+  
+<section id="outline" class="section">
+  <h2>Outline and Goals</h2>
+  <p>
+    As ROS 2 continues to evolve, so too do the ways it's being taught—in universities, industry training programs,
+    outreach efforts, and informal communities. This half-day workshop brings together educators, curriculum developers,
+    tool/platform creators, and students to share real-world experiences in teaching robotics with ROS 2.
+  </p>
+
+  <p>
+    The workshop will feature short talks, panel discussions, interactive sessions, and practical demos, all centered around
+    key questions:
+  </p>
+
+  <ul>
+    <li>What tools and methods are educators using to teach ROS 2 successfully?</li>
+    <li>What hasn’t worked, and what can we learn from that?</li>
+    <li>How can the ROS community better support robotics education at all levels?</li>
+    <li>What platforms—hardware and software—enable effective, scalable learning?</li>
+    <li>Can we build more alignment between tool developers and education needs?</li>
+  </ul>
+
+  <p>Our goals:</p>
+  <ul>
+    <li>Showcase diverse teaching approaches and challenges with ROS 2.</li>
+    <li>Share reusable tools, techniques, and platforms across the community.</li>
+    <li>Foster networking and potential collaboration between educators, students, and developers.</li>
+    <li>Begin forming a living resource hub or ongoing ROS Education community of practice.</li>
+  </ul>
+</section>
+
+
+<section id="audience" class="section">
+  <h2>Intended Audience and Learning Outcomes</h2>
+
+  <p><strong>This workshop is for:</strong></p>
+  <ul>
+    <li>University educators (UG and PG) teaching robotics, mechatronics, or embedded systems.</li>
+    <li>Industry trainers and technical educators running ROS 2 bootcamps or onboarding.</li>
+    <li>High school and outreach educators working to introduce robotics early.</li>
+    <li>Developers of educational tools and platforms based on ROS 2.</li>
+    <li>Hobbyist/maker educators or content creators teaching through informal channels.</li>
+    <li>Students and recent learners, offering insight into learning barriers and motivations.</li>
+    <li>ROS 2 Developers and Community, to provide a perspective on how learners interact with ROS 2 and insights into what works well and what needs improvement.</li>
+  </ul>
+
+  <p><strong>Attendees will leave with:</strong></p>
+  <ul>
+    <li>Practical course design strategies and pitfalls to avoid.</li>
+    <li>A list of effective tools, simulators, and hardware platforms for teaching.</li>
+    <li>Fresh insights into engaging students and reducing friction with ROS 2.</li>
+    <li>New contacts and possible collaborators in the ROS education space.</li>
+    <li>Access to a shared open source collection of teaching materials and resources.</li>
+  </ul>
+</section>
+
+  
+  <section id="schedule" class="section">
+    <h2>Workshop Schedule</h2>
+<table>
+    <tr>
+        <th>Session</th>
+        <th>Time</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>Welcome &amp; Workshop Goals</td>
+        <td>14:30–14:40</td>
+        <td>Framing the workshop themes and introducing the team and agenda.</td>
+    </tr>
+    <tr>
+        <td>Lightning Talks (Part 1)</td>
+        <td>14:40–15:20</td>
+        <td>
+            4 short talks (~10 mins each + Q&amp;A).<br>
+            Presenters:<br>
+            • Dr Vijay Pawar<br>
+            • Dr Rafaello Bonghi<br>
+            • Prof Sabine Hauert<br>
+            • Prof Marc Hanheide
+        </td>
+    </tr>
+    <tr>
+        <td>Lightning Talks (Part 2)</td>
+        <td>15:20–16:00</td>
+        <td>
+            More short talks on ROS education.<br>
+            Presenters:<br>
+            • Alexander Enoch<br>
+            • Martin Klomp<br>
+            • Riccardo Tellez<br>
+            • Dr Ingo Keller<br>
+        </td>
+    </tr>
+    <tr>
+        <td>Break &amp; Networking</td>
+        <td>16:00–16:15</td>
+        <td>Coffee and snacks. Informal discussions and networking among attendees.</td>
+    </tr>
+    <tr>
+        <td>Demo Showcase</td>
+        <td>16:00–16:40</td>
+        <td>
+            Live or semi-live demos of teaching platforms and tools.<br>
+            Examples include:<br>
+            • Robot kits, digital twins, RViz-based tools<br>
+            • Open course frameworks and simulators<br>
+            • Attendee 2-minute informal demo slots
+        </td>
+    </tr>
+    <tr>
+        <td>Interactive Panel &amp; Audience Q&amp;A</td>
+        <td>16:40–17:15</td>
+        <td>
+            Moderated panel with educators, students, and developers.<br>
+            Topics:<br>
+            • Student engagement strategies<br>
+            • Open-source vs commercial tools<br>
+            • Inclusive and accessible robotics education
+        </td>
+    </tr>
+    <tr>
+        <td>Collaborative Breakouts &amp; Discussions</td>
+        <td>17:15–17:45</td>
+        <td>
+            Small group discussions with prompts such as:<br>
+            • Designing a ROS 2 curriculum from scratch<br>
+            • Gaps in the ROS teaching ecosystem<br>
+            • Major challenges in ROS education<br>
+            Groups will report key insights.
+        </td>
+    </tr>
+    <tr>
+        <td>Wrap-up &amp; Next Steps</td>
+        <td>17:45–18:00</td>
+        <td>
+            Summary of insights and discussions.<br>
+            Feedback gathering and information sharing.<br>
+            Option to join ROS Education interest group or mailing list.
+        </td>
+    </tr>
+</table>
+
+    
+  </section>
+
+
+
+    
+  <section id="schedule" class="section">
+    <h2>Details of Lightning Talks</h2>
+<table>
+    <tr>
+        <th>Presenters</th>
+        <th>Title</th>
+        <th>Description</th>
+    </tr>
+  
+    <tr>
+        <td>Dr Vijay Pawar</td>
+        <td>TBD</td>
+        <td>TBD</td>
+    </tr>
+
+  <tr>
+        <td>Dr Rafaello Bonghi</td>
+        <td>TBD</td>
+        <td>TBD</td>
+    </tr>
+
+  <tr>
+        <td>Prof Sabine Hauert</td>
+        <td>Using ROS in education and research - hurdles and opportunities</td>
+        <td>In this talk I'll explore the different levels of ROS2 use in education and research, common pitfalls, opportunities, and open questions to help adoption.</td>
+    </tr>
+
+  <tr>
+        <td>Prof Marc Hanheide</td>
+        <td>A robot in a Box: Adventures in GPU-accelerated ROS2 devcontainers for education and assessment</td>
+        <td>We have developed a comprehensive GPU-accelerated ROS2 development environment delivered as a DevContainer, featuring a virtual desktop with VirtualGL and NVIDIA runtime support for 3D acceleration if available. This containerised solution runs seamlessly across Windows, Linux, and Mac hosts, providing BSc robotics and computer science students with a fully configured development environment in under three minutes from initial setup. The platform includes web-based desktop access, eliminating complex local installations whilst maintaining professional development workflows through Visual Studio Code integration. Our implementation leverages Zenoh bridging technology to connect the containerised development environment to real-world robots, enabling students to seamlessly transition from simulation to physical hardware interaction. I will share lessons learned from deploying this solution in production teaching environments, along with our open-source repository template and comprehensive resources for replication at other institutions.</td>
+    </tr>
+
+  <tr>
+        <td>Alexander Enoch</td>
+        <td>The good, the bad, and the terrible WiFi - Learnings from putting robots into schools</td>
+        <td>Robots are fantastic tools for schools, and useful not just for teaching robotics and coding, but also to encourage a broader interest in STEM subjects. This talk will cover some of the theory behind why that is, and how active learning and constructionist learning techniques can empower learners using robots. I'll also talk about some tips and learnings from our last 10 years of getting robots into classrooms - including some things that really tripped us up!</td>
+    </tr>
+
+  <tr>
+        <td>Martin Klomp</td>
+        <td>Beyond Simulation: Lessons from Using the MIRTE Robot in Education</td>
+        <td>At TU Delft we use the open-source MIRTE robot across bachelor- and master-level courses. While simulations are valuable, real robots provide unique learning opportunities. In this talk I will share how we balance simulation and hardware depending on the learning objectives and highlight the key challenges we faced along the way.</td>
+    </tr>
+
+  <tr>
+        <td>Riccardo Tellez</td>
+        <td>The importance of mixing simulations and real robots in robot education</td>
+        <td>In this talk I will explain: 1) the reasons why educators must not skip practice with simulators nor with real robots in their lessons. 2) the advantages of each one in the educational process. 3) and how to implement a simple system that allows the teacher to provide both experiences with minimal preparation</td>
+    </tr>
+   
+</table>
+
+    
+  </section>
+
+  
+
+  
+  <section id="organisers" class="section">
+    <h2>Organisers</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+      
+      <!-- Mickey Li -->
+      <div align="center">
+        <img src="https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=Tb7C92oAAAAJ&citpid=1" alt="Mickey Li" width="150"><br>
+        <strong>Dr Mickey Li</strong><br>
+        <em>UCL</em><br>
+        <a href="#" class="fa fa-home"></a>
+        <a href="#" class="fa fa-graduation-cap"></a>
+        <a href="#" class="fab fa-linkedin"></a>
+      </div>
+      
+      <!-- Valerio Modugno -->
+      <div align="center">
+        <img src="imgs/1704944256823.jpg" alt="Valerio Modugno" width="150"><br>
+        <strong>Dr Valerio Modugno</strong><br>
+        <em>UCL</em><br>
+        <a href="#" class="fa fa-home"></a>
+        <a href="#" class="fa fa-graduation-cap"></a>
+        <a href="#" class="fab fa-linkedin"></a>
+      </div>
+      
+      <!-- Ziwen Lu -->
+      <div align="center">
+        <img src="imgs/zl.jpg" alt="Ziwen Lu" width="150"><br>
+        <strong>Ziwen Lu</strong><br>
+        <em>UCL</em><br>
+        <a href="#" class="fa fa-home"></a>
+        <a href="#" class="fa fa-graduation-cap"></a>
+        <a href="#" class="fab fa-linkedin"></a>
+      </div>
+      
+      <!-- Vijay Pawar (duplicate for organiser role) -->
+      <div align="center">
+        <img src="imgs/vp.jpg" alt="Vijay Pawar" width="150"><br>
+        <strong>Dr Vijay Pawar</strong><br>
+        <em>UCL</em><br>
+        <a href="#" class="fa fa-home"></a>
+        <a href="#" class="fa fa-graduation-cap"></a>
+        <a href="#" class="fab fa-linkedin"></a>
+      </div>
+      
+      <!-- Simon Julier -->
+        <!--
+      <div align="center">
+        <img src="imgs/simon.png" alt="Simon Julier" width="150"><br>
+        <strong>Prof Simon Julier</strong><br>
+        <em>UCL</em><br>
+        <a href="#" class="fa fa-home"></a>
+        <a href="#" class="fa fa-graduation-cap"></a>
+        <a href="#" class="fab fa-linkedin"></a>
+      </div>
+      -->
+        
+      <!-- Favour Adetunji -->
+      <div align="center">
+        <img src="imgs/fa.jpg" alt="Favour Adetunji" width="150"><br>
+        <strong>Favour Adetunji</strong><br>
+        <em>Heriot-Watt University</em><br>
+        <a href="#" class="fa fa-home"></a>
+        <a href="#" class="fa fa-graduation-cap"></a>
+        <a href="#" class="fab fa-linkedin"></a>
+      </div>
+      
+      <!-- Ziniu Wu -->
+      <div align="center">
+        <img src="https://ziniuw.com/assets/img/avatar.JPG" alt="Ziniu Wu" width="150"><br>
+        <strong>Ziniu Wu</strong><br>
+        <em>University of Bristol</em><br>
+        <a href="#" class="fa fa-home"></a>
+        <a href="#" class="fa fa-graduation-cap"></a>
+        <a href="#" class="fab fa-linkedin"></a>
+      </div>
+      
+      </div>
+  </section>
+
+  <section id="dates" class="section">
+    <h2>Registration</h2>
+    <p>Please find more details on the ROSCon UK website: 
+  <a href="https://roscon.org.uk/2025/" target="_blank" rel="noopener noreferrer">
+    https://roscon.org.uk/2025/
+  </a>.
+</p>
+
+  </section>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
